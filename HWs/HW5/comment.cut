@@ -1,5 +1,0 @@
-
-Since the interval is symmetric about the median let's only consider the case where $x < y \leq x^*$. The "best" case scenario in terms of the maximum of $|\{R_i | x R_i y\}|$ is the situation where $x$ is between $x_{m-2}$ and $x_{m-1}$ and $y$ is in-between $x_{m-1}$ and $x_m$ where $x_m = x^*$ is the median of the peaks of the preferences. In the "best" case for $x$, we still have that $y$ is preferred to $x$ via PM but that's the same outcome as the single peak preference with the median of the original peaks being that peak and thus the PM outcome of a profile of single-peaked preferences is single peaked $\QED$
-
-
-
