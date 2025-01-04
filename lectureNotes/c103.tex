@@ -1,0 +1,314 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{parskip}
+\usepackage{titling}
+\usepackage{hyperref}
+
+
+
+
+
+
+% Theorem environments
+
+\newtheorem{thm}{Theorem}
+\newtheorem{lem}{Lemma}
+\newtheorem{prop}{Proposition}
+\newtheorem{defin}{Definition}
+\newtheorem{undefin}[defin]{Definitions}
+\newtheorem{coro}{Corollary}
+\newtheorem{ex}{Example}
+\newtheorem{unex}[ex]{Examples}
+\newtheorem*{note}{Note}
+
+
+% Commands 
+
+\newcommand{\tn}[1]{\textnormal{#1}}
+\newcommand{\pp}[1]{\mathcal{P}(#1)}
+
+
+% Special Characters/Words
+\newcommand{\name}[1]{\tn{(\textbf{#1)}}}
+
+
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\Zplus}{{\mathbb{Z}}_{\geq 0}}
+\newcommand{\Rplus}{{\mathbb{R}}_{\geq 0}}
+\newcommand{\CC}{\mathbb{C}}
+
+
+\newcommand{\union}{\cup}
+\newcommand{\intersect}{\cap}
+\newcommand{\minus}{\setminus}
+\newcommand{\comp}[1]{{#1}^c}
+\newcommand{\es}{\emptyset}
+\newcommand{\RIGHT}{\Longrightarrow}
+\newcommand{\LEFT}{\Longleftarrow}
+\newcommand{\IFF}{\Longleftrightarrow}
+\newcommand{\QED}{\blacksquare}
+
+\newcommand{\pref}{\succsim}
+\newcommand{\spref}{\succ}
+
+\newcommand{\Proof}{\textbf{Proof:} \hspace*{0.25mm}}
+
+% Spacing
+\setlength{\droptitle}{-10em} 
+\setlength{\parindent}{0pt}
+\newcommand{\3}{\vspace*{3mm}}
+\hypersetup{
+    colorlinks=true, %set true if you want colored links
+    linktoc=all,     %set to all if you want both sections and subsections linked
+    linkcolor=black,  %choose some color if you want links to stand out
+}
+
+
+
+\title{\textbf{Econ/Math C103 Lecture Notes}}
+\author{}
+\date{}
+
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+
+
+
+
+\newpage
+
+\section{Individual Choice Theory I: Choice, Revealed Preference \& Ordinal Utility}
+\subsection{Binary Relations}
+
+Binary relations turn out to be important mathematical tools in economic theory. Most importantly, preferences of individuals are typically modeled as binary relations as we will discuss in more detail in the next section. Let $X$ be a set. $X \times X$ denotes the Cartesian product, set of all ordered pairs $(x, y)$ where $x, y \in X$. A binary relation $B$ on $X$ is a subset $B \subset X \times X$. We usually write $xBy$ instead of $(x, y) \in B$ and read it as $x$ \emph{stands in relation $B$} to $y$. (We will also sometimes use $R, P , I, \pref, \spref, \sim,$... to denote binary relations.)
+
+\begin{defin} 
+
+\name{Binary Relations} \tn{Let $X$ and $Y$ be nonempty sets. A relation $B$ is a subset of $X \times Y$ and the notation $x B y$ is used to denote $(x,y) \in X \times Y $}
+
+\end{defin}
+
+\begin{unex}
+\
+\begin{itemize}
+\item \tn{Let} $X = \{\tn{$c$(hicken), $f$(ish), $s$(teak)} \}$ \tn{then} 
+\[ X \times X = \{(c,c), (c,f), (c,s), (f,c), (f,f), (f,s), (s,c), (s,f), (s,s)\}\]
+
+\tn{Thus, $B = \{(c,c), (c,s), (s,f) \}$ is a valid binary relation on $X$. Another example would be if $B$ denoted the binary relation of "is a lighter lunch than" which would induce the subset $B = \{(f,c), (c,s), (f,s) \}$  }.
+
+\item  \tn{If $X$ is the set of people in the world, then $B$ denote the relations of is “is a brother of”, “is taller than”, “is at
+least as tall as,” “is just as tall as,” “is the aunt of,” “is married to,” “weighs at
+least twice as,” “is a relative of”...}
+
+\item \tn{If $X = [0,1]$ then the standard inequality/equality signs $\geq, >, =$ would all be valid binary relations}
+\end{itemize}
+
+\end{unex}
+
+
+The general notion of a binary relation is quite weak and so, to make things more interesting, we introduce some intuitive notions about binary relations.
+
+\begin{undefin} \name{Properties of Binary Relations}
+\tn{Let $X$ be a nonempty set and $B$ a binary relation.}
+\begin{itemize}
+\item \tn{$B$ is \textbf{reflexive} if $x B x$ for all $x \in X$. }
+\item \tn{$B$ is \textbf{complete} if $x B y$ or $y B x $ for any $x, y \in X$.}
+\begin{note}
+\tn{Completeness of $B$ implies that it is also reflexive.}
+\end{note}
+\item \tn{$B$ is \textbf{transitive} if $x B y$ and $y B z$ implies $x B z$ for any $x,y,z \in X$.}
+\item \tn{$B$ is \textbf{symmetric} if $x B y $ implies $y B x$ for any $x, y \in X$.}
+\begin{note}
+\tn{A relation being symmetric means that $x B y$ is equivalent to $ y B x$ like the equality symbol ``$=$" for real numbers. $x = y$ is the same as saying $y = x$.}
+\end{note}
+\item \tn{$B$ is \textbf{antisymmetric} if $x B y $ and $y B x$ then $ x = y$ for any $x,y \in X$. }
+\begin{note}
+\tn{Despite the use of the word ``anti", a relation can be symmetric and anti-symmetric at the same time. For example, the equality symbol $``="$ is symmetric and antisymmetric for all real numbers. 
+}
+\end{note}
+\end{itemize}
+\end{undefin}
+
+The following terms are some additional definitions for two types of preferences we will be working with.
+
+\begin{undefin} \name{Common Types of Binary Relations}
+\
+\begin{itemize}
+\item \tn{$B$ is a \textbf{weak order} if it is complete and transitive}
+\item \tn{$B$ is a \textbf{linear/strict order} if it is complete, transitive, and anti-symmetric}
+\end{itemize}
+\end{undefin}
+
+Here are some examples of weak and linear orders 
+
+\begin{unex}
+\
+\begin{itemize}
+\item \tn{$\geq$ is a linear order since it is complete (all numbers are comparable), transitive, and anti-symmetric ($x \geq y $ and $y \geq x$ implies $x = y$)}
+\item \tn{Let $X$ be any nonempty set and let $u:X \to \RR$ be \emph{any} function. The binary relation $R$ defined by $x R y \IFF u(x) \geq u(y)$ is a complete and transitive relation. In fact, if we were to replace $\RR$ with any other set $Y$ with a binary relation (Let's call it $B$) the same construction is doable. However, instead of defining $R$ with $\geq$, we would define $x R y$ to be true when $u(x) B u(y)$ where $u: X \to Y$ is a function. }
+\end{itemize}
+\end{unex}
+
+\subsection{Preferences}
+
+In economics, when $X$ is an arbitrary set of alternatives/outcomes that could be faced by an individual, we model the individual’s preference over $X$ as a binary relation. For example for a senior facing a career choice, the set of alternatives $X$ could be \{apply to a PhD program in economics, be an investment banker, apply for an MBA, be a consultant,...\}. If we interpret the binary relation $R$ as a preference relation, then we read $xRy$ as “$x$ is weakly preferred to $y$,” or “$x$ is at least as preferable as $y$”. 
+
+With this view in mind, it would make sense to have some sense of "rationality". What does it mean for a person with preferences to be rational? Well, it would make sense for such a person to always be able to rank two alternatives. Mathematically, this means that the preference is complete. 
+
+Going through the list of properties of binary relations, it seems like transitivity would also be a particularly nice and intuitive property to ascribe to rationality. 
+
+\begin{defin} \name{Rationality}
+
+\tn{A preference $R$ over a set of alternatives (i.e a binary relation over a nonempty set) is said to be rational if and only if it is complete and transitive }
+
+\end{defin}
+
+
+\subsection{Utility Functions and Ordinal Representations}
+
+An often convenient way of representing a binary relation is by using a real valued function that we will call a utility function.
+
+\begin{defin} \name{Utility Function Representation}
+\tn{Let $R$ be a preference on $X$. Let $u : X \to \RR$ be real valued function (the utility function). We say that $u$ represents $R$ if:}
+\[x R y \IFF u(x) \geq u(y)\]
+
+\end{defin}
+
+In the second set of examples, it was shown that any binary relation induced by a utility function is complete and transitive. For finite sets, it turns out that the notion of Rationality and representable by utility function coincide. 
+\begin{prop} \tn{Let $X$ be a nonempty finite set and let $R$ be a preference relation on $X$. $R$ is represented by a utility function $u:X \to \RR$ if and only if $R$ is rational} 
+\end{prop}
+
+\Proof $\RIGHT$ If $u$ represents $R$ then $x R y \IFF u(x) \geq u(y)$. If $x R y$ and $y R z$ then $u(x) \geq u(y)$ and $u(y) \geq u(z)$ $\RIGHT u(x) \geq u(z) \RIGHT x R z$ which proves that $R$ is transitive. Furthermore, $R$ is clearly complete since any two real numbers ($u(x)$ and $u(y)$ in this case) are comparable and thus $R$ is rational. 
+
+
+$\LEFT$ Define $u(x)$ to be the size of $L(x) = \{z | x R z\}$. $L(x)$ can be thought of as all of the elements that an agent prefers $x$ over. Let $x R y$ then $y R z \RIGHT x R z$ by transitivity of $R$. Furthermore, $L(y) \subseteq L(x)$ implies that $x R y$ by completeness ($y \in L(y))$. Thus, $x R y \RIGHT L(y) \subseteq L(x) \RIGHT u(y) \leq u(x) $. Conversely, let $u(x) \geq u(y)$. For the sake of contradiction, assume that $x R y$ is false. By the completeness of $R$, this implies that $y R x \RIGHT L(x) \subseteq L(y)$. Since $y R x$ but not $x R y$, it must be that $x \in L(y)$ but $y \notin L(x)$. Thus, $L(x) \neq L(y) \RIGHT L(x) \subset L(y) \RIGHT u(x) < u(y)$ which contradicts our assumption that $u(x) \geq u(y)$! Therefore, our additional assumption that $x R y$ is false was untrue. Therefore, $u(x) \geq u(y) \RIGHT x R y$ which means that $R$ is represented by $u$ $\QED$
+
+\begin{note}
+\tn{The condition that $X$ is finite ensures that $u(x)$ is well defined. This equivalence is valid for all finite sets $X$. However, a preference $R$ over \emph{any} set $X$ that is represented by a utility function must be complete and transitive. }
+
+\end{note}
+
+To make the last bit of the proof a bit more digestible, let's introduce some new notation.
+
+\begin{defin} \name{Strict Preference and Indifference} \tn{Let $R$ be a rational preference. Let $P$ denote \emph{strict} preference with respect to $R$ i.e $x P y$ if and only if $x R y$ but not $y R x$. Let $I$ denote \emph{indifference} with respect to $R$ i.e $x I y$ if and only if $x R y$ and $y R x$.
+}
+\end{defin}
+
+Therefore, in the last part of the proof, we assume, for the sake of contradiction, that $x$ was \emph{strictly} preferred to $y$ i.e $y P x$. For $y P x$, $L(x) \subseteq L(y)$ like in the case of $y R x$ but we have the stricter condition that $L(x) \subset L(y)$ due to the fact that the agent strictly prefers $y$ over $x$. Thus, $u(y) > u(x)$ and we have our contradiction. With this in mind, for any representable preference $R$, $x P y \IFF u(x) > u(y)$ and $x I y \IFF u(x) = u(y)$. 
+
+
+Now with this result, we've shown that rationality over a set of choices is equivalent to being equipped by \emph{some} utility function. Is that function necessarily unique? This is clearly not true. What if in the proof of the above result we replaced $u(x)$, defined to the size of $L(x)$, with double the size of $L(x)$? This would change nothing and the proof would still be valid. Generally, if $f: \RR \to \RR$ is any strictly increasing function i.e $x \geq y \RIGHT f(x) \geq f(y)$ then $f(u(x))$ also represents $R$. 
+
+\begin{prop}
+\tn{Let $X$ be a nonempty set and $R$ a rational preference that is represented by a utility function $u$. If $f$ is strictly increasing then $v(\cdot) = f(u(\cdot)):X \overset{u}{\to} \RR \overset{f}{\to} \RR$ also represents $R$.}
+\end{prop}
+\Proof This is equivalent to proving that $u(x) \geq u(y)$ and $v(x) \geq v(y)$ are equivalent. If $u(x) \geq u(y) \RIGHT f(u(x)) = v(x) \geq v(y) = f(u(y)) $. By way of contradiction, assume that $v(x) \geq v(y)$ but $u(x) < u(y)$. Since $f$ is strictly increasing, we have that $f(u(x)) = v(x) < v(y) = f(u(y))$ which contradicts $v(x) \geq v(y)$. Thus, $v(x) \geq v(y) \RIGHT u(x) \geq u(y)$ and $u$ \& $v$ represent the same preference $\QED$
+
+The cardinality of the utility function has no meaning in this setup. Nor can any notion of strength or intensity of preference be captured in this framework. The utility function represents a preference relation R as long as they are “ordinally equivalent”. We will be able to give some meaning to cardinal utility when we discuss choice under uncertainty.
+
+\subsection{Choice Functions and Correspondences}
+
+From now on suppose that the set of potential alternatives $X$ is finite. Denote the set of nonempty subsets of $X$ by $\pp{X)} = \{A \subseteq X | A \neq \es\}$. We can perceive every such subset of alternatives $A, B, C \in \pp{X}$ as a potential decision-problem or choice set. 
+
+\quad For example when $X$ is a finite set of potential meals, $A = \{$\tn{$c$(hicken), $f$(ish), $s$(teak)} $\}$ corresponds to a decision problem where the decision-maker needs to choose a lunch out of the three meals in the menu A. Alternatively when X is a finite set of potential cars, $B =\{$Toyota-Corolla, Ford-Taurus, Mitsubishi-Lancer, Honda-Civic$\}$ corresponds to a decision problem where the decision-maker needs to buy one out of these four possible cars. 
+
+
+\quad A choice function/correspondence tells us what the decision maker chooses when she is faced with any such decision problem A. Namely, she chooses the alternatives in $c(A)$ when she is faced with $A$. If our decision-maker always chooses exactly one element out of every choice set $A$, then we can represent her choices by a choice function.
+
+\begin{defin} \name{Choice Function} \tn{A \textbf{choice function} is a function $c: \pp{X} \to X$}
+\end{defin}
+
+If our decision-maker may sometimes be indifferent among a subset of choices, we may also want to allow for the possibility where she/he chooses more than one element from every choice set $A$ (to be interpreted as she is just as willing to choose any element in that subset), in that case we can represent her/his choices by a choice correspondence. 
+
+\begin{defin} \name{Choice Correspondence} 
+\tn{A \textbf{choice correspondence} is a function $c: \pp{X} \to \pp{X}$ such that $c(A) \subseteq A$ for all $A \subseteq X$}
+\end{defin}
+
+\begin{note}
+\tn{Since $\pp{X}$ is defined to be the set of all \textbf{nonempty} subsets of $X$, $c(A)$ is nonempty for all $A \in \pp{X}$. Additionally, every choice function can be thought of a special choice correspondence where $c(A)$ is always a singleton i.e is of size one.} 
+\end{note}
+
+\begin{unex}
+\
+\begin{itemize}
+\item \tn{(The first-best procedure) Let X be a set of potential candidates for a job. For each candidate $x$ let $e(x)$ denote the years of experience that candidate $x$ has in similar jobs. For any set of applicants $A \in \pp{X}$, suppose that the employer chooses the most experienced applicants in $A$.}
+
+\tn{\quad More generally let $X$ be an arbitrary finite set of alternatives. Let $u : X \to \RR$ be a function over the alternatives and let $c(A)$ be the set of maximizers of $u$ in A. That is $c(A) = \{x \in A |{\forall}_{z \in A} u(x) \geq u(z)\}$. This is clearly a choice correspondence and if $u$ is injective ($u(x) = u(y) \RIGHT x = y$) then it is a choice function.}
+
+\item \tn{(The second-best procedure) Let $X$ be an arbitrary finite set of alternatives. Let $u : X \to \RR$ be a one-to-one function over the alternatives. For any set $A$ with at least two elements, let $c(A)$ be the second from top alternative in $A$ w.r.t. $u$. If $A$ has one element then let $c$ return the single element in $A$. This is a choice function.}
+
+\item \tn{(Examples of procedures with two criteria) Let $X$ be again a set of potential candidates for a job. For each candidate $x$ let $e(x)$ denote the years of experience that candidate $x$ has in similar jobs, and let $g(x)$ be the undergraduate GPA of the candidate. Assume that no two applicants have the same GPA nor the same experience. Let $e^*$ denote a critical level of experience for the employer. For any set of applicants $A \in \pp{X}$}
+\begin{enumerate}
+\item[\tn{(1)}] \tn{The employer first considers the applicant $x_{\tn{gpa}}$ with the highest GPA in $A$. If $x_{\tn{gpa}}$ has an experience level of at least $e^*$, then he gives the job to $x_{\tn{gpa}}$. If
+$x_{\tn{gpa}}$’s experience is less than $e^*$, then he gives the job to the most experienced candidate $x_e$ in $A$.}
+\item[\tn{(2)}] \tn{The employer first considers the most experienced applicant $x_{e}$ in $A$. If $x_e$ has an experience level at least $e^*$, then he gives the job to $x_e$. Otherwise he gives the job to the the applicant $x_{\tn{gpa}}$ with the highest GPA in $A$}
+\end{enumerate}
+\tn{By our simplifying tie-breaking assumption that no two applicants have the same GPA nor the same experience, each of the above procedures lead to well-defined choice function. These are also known as $(u, v)$ procedures (Kalai, Rubinstein, and Spiegler, 2002).}
+
+\item \tn{(Satisfycing, Herbert Simon) Suppose that the set of alternatives is ordered $x_1, . . . , x_n$ where $n = |X|$. Let $s : X \to \RR$ be a function that denotes the agent’s “satisfaction
+level” from the alternative. Assume that there is a cutoff value $s^* \in \RR$ such that the decision-maker finds an alternative $x_i$ satisfactory if and only if $s(x_i) \geq s^*$. }
+
+
+\tn{Faced with a decision problem $A$, the decision-maker uses the following procedure to make a choice out of $A$. He considers the alternatives in $A$ in order, starting from the alternative with the lowest index, then the one with the second lowest index, and so on. The first time he encounters an alternative $x_i$ with $s(x_i) \geq s^*$, he stops and chooses $x_i$. If he runs through all alternatives in $A$ and does not find a satisfactory one, then he just chooses the last alternative he considered. }
+
+
+\tn{A decision-maker who “satisfices” is looking for a satisfactory alternative (that is, an alternative $x_i \in A$ such that $s(x_i) \geq s^*$) instead of an optimal one (that would be an alternative $x_i \in A$ such that $s(x_i) \geq s(x_j)$ for any $x_j \in A$). This is the main contrast between satisfycing and optimizing.}
+
+\end{itemize}
+\end{unex}
+
+\subsection{Rationalizing Choice Correspondences \& Revealed Preferences}
+
+Just like with utility functions, there is a very nice correspondence between rational preference relations and choice correspondences 
+\begin{defin} \name{Induced Choice Correspondence}
+\tn{Let $X$ be a nonempty finite set and $R$ a rational preference relation. $c^R(A)  = \{x \in A | {\forall}_{z \in A} x R z\}$ is the \textbf{induced choice correspondence}}
+\end{defin}
+
+This is a valid definition since if $R$ is rational then it is represented by some utility function $u$. Therefore, $c^R(A)  = \{x | {\forall}_{z \in A} x R z\} =  \{x | {\forall}_{z \in A} u(x) \geq u(z)\} $ and, by the finiteness of $X$, $c^R(A)$ must be nonempty since $u(\cdot)$ must have some maximizer. Furthermore, if $R$ is a linear order this maximizer must be unique and $c^R$ becomes a choice function. Formally, if $x$ and $x'$ were two maximizers then $u(x) = u(x') \RIGHT x I x' \RIGHT x = x'$ since $R$ is antisymmetric and thus $c^R(\cdot)$ would always contain a single value. 
+
+
+Now, what about the converse? Given a choice correspondence $c$, can one find a rational preference $R$ such that $c = c^R$? 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
