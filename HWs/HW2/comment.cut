@@ -1,0 +1,11 @@
+ In the following, suppose that our individual is an expected utility maximizer with the vNM utility function $u : \RR \to \RR$
+
+ \begin{enumerate}
+
+ \item[(a)] Let $U(p)$ denote the expected utility function that $u$ admits so that $U(\delta_x) = u(x)$.  A decision-maker is risk-averse if and only if $\delta_{\alpha x + (1-\alpha)y}$ $R$ $\alpha \delta_x + (1-\alpha) \delta_y$ for any $x,y \in \RR$ and $\alpha \in [0,1] \IFF U(\delta_{\alpha x + (1-\alpha)y}) \geq U(\alpha \delta_x + (1-\alpha) \delta_y) \IFF u(\alpha x + (1-\alpha) y) \geq \alpha U(\delta_x) + (1-\alpha) U(\delta_y) \IFF u(\alpha x + (1-\alpha) y)  \geq \alpha u(x) + (1-\alpha) u(y)$ which is equivalent to $u$ being concave.
+
+ \item[(b)]  A definition of risk-loving would just involve switching the two lotteries in the definition of risk-averse and thus $u$ would need to be convex as opposed to concave. A definition of being risk-neutral would be where the preference relation is replaced by the indifrrence relation and thus $u$ would be convex and concave and would be of the form $ax + b$ which would mean that $u(x)$ would denote the usual expected value function.
+
+ \end{enumerate}
+
+

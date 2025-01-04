@@ -1,0 +1,210 @@
+\documentclass[11pt,oneside]{article}
+\usepackage[hmargin=1in,vmargin=1in]{geometry}               % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ...
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\usepackage{url}
+%\usepackage{verbatim}
+\usepackage{comment}
+\specialcomment{solution}{\textbf{Solution. }}{}
+%\excludecomment{solution}    %uncomment to remove solutions.
+
+%\usepackage{enumerate}
+
+%Use the enumitem package instead of enumerate
+\usepackage[shortlabels]{enumitem}
+%\usepackage{enumitem}
+%then it will support the same suntax as the enumerate package.
+%The enumerate package does not provide any extra configurations other than the label.
+
+%\setlist[enumerate]{topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex}
+\setlist[enumerate]{topsep=0pt,partopsep=0pt}
+
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+\usepackage{amsmath,amsthm,amscd,amssymb}
+\usepackage{latexsym}
+\usepackage[colorlinks,citecolor=red,pagebackref,hypertexnames=false]{hyperref}
+
+\numberwithin{equation}{section}
+
+\theoremstyle{definition}
+\newtheorem{exercise}{Exercise}
+%\newtheorem{solution}{Solution}
+\newtheorem*{defn}{Definition}
+
+
+\def\calA{\mathcal{A}}
+\def\calB{\mathcal{B}}
+\def\calC{\mathcal{C}}
+\def\calT{\mathcal{T}}
+\def\OR{\overline{\mathbb{R}}}
+\def\RR{\mathbb{R}}
+\def\CC{\mathbb{C}}
+\def\FF{\mathbb{F}}
+\def\QQ{\mathbb{Q}}
+\def\ZZ{\mathbb{Z}}
+\def\NN{\mathbb{N}}
+\def\KK{\mathbb{K}}
+\def\PS{\mathfrak{P}}
+\def\CS{\mathfrak{C}}
+
+%\def\NN{\mathbb{Z}_{> 0}}
+\def\Nzero{\mathbb{Z}_{\geq 0}}
+\def\EE{\mathbb{E}}
+\def\Pset{\mathbb{P}}
+\def\supp{\mathrm{supp}}
+\def\diam{\mathrm{diam}}
+\def\sp{\mathrm{span}}
+\def\ker{\mathrm{ker}}
+%\def\sp{\mathrm{span}} %messes up align enviroment
+\newcommand{\rbr}[1]{\left( {#1} \right)}
+\newcommand{\sbr}[1]{\left[ {#1} \right]}
+\newcommand{\cbr}[1]{\left\{ {#1} \right\}}
+\newcommand{\abr}[1]{\left\langle {#1} \right\rangle}
+\newcommand{\abs}[1]{\left| {#1} \right|}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\def\one{\mathbf{1}}
+\DeclareMathOperator*{\esssup}{ess\,sup}
+\newcommand*\wc{{}\cdot{}}
+%\newcommand*\wc{ \, \cdot \,}
+%wc for wildcard
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+\newcommand{\sgn}{\textup{sgn\,}}
+\newcommand{\es}{\emptyset}
+\newcommand{\IFF}{\Longleftrightarrow}
+\newcommand{\openB}[2]{\text{B}_{#2}(#1)}
+\newcommand{\RIGHT}{\Longrightarrow}
+\newcommand{\LEFT}{\Longleftarrow}
+\newcommand{\QED}{\blacksquare}
+\newcommand{\intersect}{\bigcap}
+\newcommand{\union}{\bigcup}
+\newcommand{\closeB}[2]{\overline{B}_{#2}(#1)}
+\newcommand{\close}[1]{\overline{#1}}
+\newcommand{\inter}[1]{{#1}^\mathrm{o}}
+\newcommand{\tend}{\longrightarrow}
+\newcommand{\infnorm}[1]{\norm{#1}_{\infty}}
+\newcommand{\pnorm}[2]{{\norm{#1}}_{#2}}
+\newcommand{\lspace}[1]{{\ell}^{#1}}
+\newcommand{\maps}[2]{L(#1,#2)}
+\newcommand{\Gr}[1]{\Gamma{(#1)}}
+\newcommand{\inner}[2]{\langle#1{,}#2\rangle}
+\newcommand{\Span}[1]{\textnormal{span}(#1)}
+\newcommand{\orgC}[1]{{#1}^{\perp}}
+\newcommand{\tn}[1]{\textnormal{#1}}
+
+\newcommand{\directsum}{\bigoplus}
+
+
+\newcommand{\la}{\lambda}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{12pt}
+
+
+%\title{\parbox{14cm}{\centering{  Interior points of circle and sphere packings}}}
+\begin{document}
+
+\textbf{HW 1 - Econ C103 - Fall 2024 - Rishab Bomma}
+
+
+\begin{exercise}
+
+A group of people met and some of them shook each other hands. Prove that the number of people who shook others’ hands an odd number of times is, in fact, even.
+
+
+
+\end{exercise}
+
+\begin{proof}
+
+Let $S$ denote the group of all people shaking hands and if $s \in S$ let $f(s)$ be the number of hands they shook. We can partition $S$ into two groups of people: people who shook an odd number of hands and people who didn't which we'll denote $O \subseteq S$ and $E \subseteq S$. Furthermore, $\sum_{s \in S} f(s) = \sum_{o \in O} f(o) + \sum_{e \in E} f(e)$. Note, that since handshakes come in pairs (i.e when two people shake hands the total count of handshakes increases by $2$), the first sum is even. The third summation (sum of all handshakes done by people who shook an even amount of hands) must be even as well since it's a sum of even numbers. Therefore, if $|O|$ was odd then $\sum_{o \in O} f(o)$ would also be odd and we would have an odd and even number ($\sum_{e \in E} f(e))$ adding up to another even number (the total amount of handshakes) which is a contradiction so $|O|$ is even. 
+
+\end{proof}
+
+\begin{exercise}
+
+Let $X$ be a nonempty set, and let $2^X$ denote the set of all subsets of $X$. Show that there is no onto function $f: X \to 2^X$
+
+\end{exercise}
+
+
+
+\begin{proof}
+
+For the sake of contradiction, assume that there is an onto function from $X$ to its power set and denote it $f$ and let $A = \{x | x \notin f(x) \} \subseteq X$. Since $f$ is onto, there must exist a $b \in X$ such that $f(b) = A$. Now, $b \in f(b) \IFF b \in A \IFF b \notin f(b)$ which is a clear contradiction and thus $f$ can't be onto as we assumed $\QED$ 
+
+\end{proof}
+
+
+\begin{exercise}
+
+Let $f : {\RR}^2 \to \RR$ be twice differentiable. Show that $\frac{d^2f}{dxdy} \geq 0 $ if and only if for every
+$x > x', y > y' \in \RR, f(x,y) - f(x,y') \geq f(x',y) - f(x',y')$
+
+
+\end{exercise}
+
+\begin{proof}
+
+Let $f_{yx}$ denote $\frac{d^2f}{dxdy}$ evaluated at $(x,y) = (x',y')$. 
+
+\[f_{yx} = \lim_{x \to x'} \frac{f_y(x,y') - f_y(x',y')}{x-x'}\]
+
+Furthermore, we also have that 
+
+\[f_y(x,y') - f_y(x',y') = \lim_{y \to y'} \frac{f(x,y) - f(x,y')}{y-y'} -  \lim_{y \to y'} \frac{f(x',y) - f(x',y')}{y-y'}  =  \lim_{y \to y'} \frac{f(x,y) - f(x,y') - f(x',y) + f(x',y')}{y-y'}   \]
+
+Putting it all together, we can explicitly compute $\frac{d^2f}{dxdxy}$ at $(x,y) = (x',y')$
+
+\[ \frac{d^2f}{dxdy} =  \lim_{x \to x'}\lim_{y \to y'} \frac{f(x,y) - f(x,y') - f(x',y) + f(x',y')}{(x-x')(y-y')} = \lim_{(x,y) \to (x',y')} \frac{L(x,y)}{(x-x')(y-y')} = s   \]
+
+where $L(x,y) = f(x,y) - f(x,y') - f(x',y) + f(x',y') $
+
+Furthermore, $L(x,y) = s(x-x')(y-y') + e(x,y)$ where $e(x,y)$ is a real function such that  $\lim_{(x,y) \to (x',y')} \frac{e(x,y)}{(x-x')(y-y') } =0 $. 
+
+
+Now, if $x >x'$ and $y>y'$ then $s(x-x')(y-y') \geq 0$ and, since $e(x,y)$ is negligible, $L(x,y) \geq 0$ which proves the inequality. Now, if the inequality were to hold for all $x>x'$ and $y>y'$ then analyzing the above equation would make it clear that if $s<0$, we would have that $L(x,y)$ (assumed to be $\geq 0$) is equal to a negative number which would obviously be false and thus the equivalency of the non-negativeness of the mixed partial and the inequality has been shown. 
+
+
+
+
+
+
+\end{proof}
+
+\begin{exercise}
+
+A pair $G = (V, E)$ is a directed graph if $V$ is a set and $E \subset V \times V$. The directed
+graph $G$ has a cycle if there exists an integer $n \geq 1$, and elements $v_1, . . . , v_n \in V$ such that $(v_1, v_2), (v_2, v_3), ... (v_{n-1}, v_n), (v_n, v_1) \in E$. Show that if $V$ is a nonempty finite set and for all $v \in V$ there is $v' \in V$ such that $(v, v) \in E$, then $G$ has a cycle.
+
+
+
+
+\end{exercise}
+
+\begin{proof}
+
+For the sake of contradiction, let's assume that there exists no cycle for a particular finite directed graph $G = (V,E)$ with the above property and let $v_0 \in V$ be a particular vertex. Now, via the given property, we can construct $v_1$ such that $(v_0, v_1) \in E$. Additionally, for any $n>1$, we can find $v_n$ such that $(v_{n-1},v_n) \in E$. Now, since we assumed no cycle exists, each $v_n$ must be distinct since if they weren't some finite cycle would exist. Furthermore, $\{v_n\}_{n\geq 0}$ is a countable subset of $V$. However, this is a contradiction since $V$ was assumed to be finite and thus there must exist some cycle in $G$.  
+
+
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

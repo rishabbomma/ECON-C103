@@ -1,0 +1,380 @@
+\documentclass[11pt,oneside]{article}
+\usepackage[hmargin=1in,vmargin=1in]{geometry}               % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ...
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\usepackage{url}
+%\usepackage{verbatim}
+\usepackage{comment}
+\specialcomment{solution}{\textbf{Solution. }}{}
+%\excludecomment{solution}    %uncomment to remove solutions.
+
+%\usepackage{enumerate}
+
+%Use the enumitem package instead of enumerate
+\usepackage[shortlabels]{enumitem}
+%\usepackage{enumitem}
+%then it will support the same suntax as the enumerate package.
+%The enumerate package does not provide any extra configurations other than the label.
+
+%\setlist[enumerate]{topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex}
+\setlist[enumerate]{topsep=0pt,partopsep=0pt}
+
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+\usepackage{amsmath,amsthm,amscd,amssymb}
+\usepackage{latexsym}
+\usepackage[colorlinks,citecolor=red,pagebackref,hypertexnames=false]{hyperref}
+
+\numberwithin{equation}{section}
+
+\theoremstyle{definition}
+\newtheorem{exercise}{Exercise}
+%\newtheorem{solution}{Solution}
+\newtheorem*{defn}{Definition}
+
+
+\def\calA{\mathcal{A}}
+\def\calB{\mathcal{B}}
+\def\calC{\mathcal{C}}
+\def\calT{\mathcal{T}}
+\def\OR{\overline{\mathbb{R}}}
+\def\RR{\mathbb{R}}
+\def\CC{\mathbb{C}}
+\def\FF{\mathbb{F}}
+\def\QQ{\mathbb{Q}}
+\def\ZZ{\mathbb{Z}}
+\def\NN{\mathbb{N}}
+\def\KK{\mathbb{K}}
+\def\PS{\mathfrak{P}}
+\def\CS{\mathfrak{C}}
+
+%\def\NN{\mathbb{Z}_{> 0}}
+\def\Nzero{\mathbb{Z}_{\geq 0}}
+\def\EE{\mathbb{E}}
+\def\Pset{\mathbb{P}}
+\def\supp{\mathrm{supp}}
+\def\diam{\mathrm{diam}}
+\def\sp{\mathrm{span}}
+\def\ker{\mathrm{ker}}
+\def\r{\hspace*{0.5mm} R \hspace*{0.5mm} }
+\def\I{\hspace*{0.5mm} I \hspace*{0.5mm} }
+\def\P{\hspace*{0.5mm} P \hspace*{0.5mm} }
+%\def\sp{\mathrm{span}} %messes up align enviroment
+\newcommand{\rbr}[1]{\left( {#1} \right)}
+\newcommand{\sbr}[1]{\left[ {#1} \right]}
+\newcommand{\cbr}[1]{\left\{ {#1} \right\}}
+\newcommand{\abr}[1]{\left\langle {#1} \right\rangle}
+\newcommand{\abs}[1]{\left| {#1} \right|}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\def\one{\mathbf{1}}
+\DeclareMathOperator*{\esssup}{ess\,sup}
+\newcommand*\wc{{}\cdot{}}
+%\newcommand*\wc{ \, \cdot \,}
+%wc for wildcard
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+\newcommand{\sgn}{\textup{sgn\,}}
+\newcommand{\es}{\emptyset}
+\newcommand{\IFF}{\Longleftrightarrow}
+\newcommand{\openB}[2]{\text{B}_{#2}(#1)}
+\newcommand{\RIGHT}{\Longrightarrow}
+\newcommand{\LEFT}{\Longleftarrow}
+\newcommand{\QED}{\blacksquare}
+\newcommand{\intersect}{\bigcap}
+\newcommand{\union}{\bigcup}
+\newcommand{\closeB}[2]{\overline{B}_{#2}(#1)}
+\newcommand{\close}[1]{\overline{#1}}
+\newcommand{\inter}[1]{{#1}^\mathrm{o}}
+\newcommand{\tend}{\longrightarrow}
+\newcommand{\infnorm}[1]{\norm{#1}_{\infty}}
+\newcommand{\pnorm}[2]{{\norm{#1}}_{#2}}
+\newcommand{\lspace}[1]{{\ell}^{#1}}
+\newcommand{\maps}[2]{L(#1,#2)}
+\newcommand{\Gr}[1]{\Gamma{(#1)}}
+\newcommand{\inner}[2]{\langle#1{,}#2\rangle}
+\newcommand{\Span}[1]{\textnormal{span}(#1)}
+\newcommand{\orgC}[1]{{#1}^{\perp}}
+\newcommand{\tn}[1]{\textnormal{#1}}
+
+\newcommand{\directsum}{\bigoplus}
+
+
+\newcommand{\la}{\lambda}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{12pt}
+
+
+%\title{\parbox{14cm}{\centering{  Interior points of circle and sphere packings}}}
+\begin{document}
+
+\textbf{HW 2 - Econ C103 - Fall 2024 - Rishab Bomma}
+
+\begin{exercise}
+
+Let $X = [0, 1] \times [0, 1]$. Let the preference relation $R$ over $X$ be defined by:
+
+\[(x_1, x_2)R(y_1, y_2) \IFF [(x_1 > y_1) \tn{or} (x_1 = y_1 \land x_2 \leq y_2)] \]
+
+Show that $R$ is rational 
+
+
+
+
+\end{exercise}
+
+\begin{proof}
+
+Let $w, x, y, z \in \RR$ and consider $x' = (x,y) \in X$ and $y' = (w,z) \in X$. WLOG assume that $x \leq w$ so if $x>w$ then $x' R y'$. If not then $x = w$ and either way, $y \leq z$ or $z \leq y$, it is clear that $x'$ and $y'$ are related. Now, for transitivity, assume that $x' R y'$ and $y' R z'$ where $z' = (u,v)$. Therefore, $x > w$ or $x =w$ and $y \geq z$ AND $w > u$ or $w = u$ and $z \geq v$. Going case by case, if $x>w$ and $w>u$ then it's clear that $x' R z'$. If $x>w$ and $w = u$ then $x>u$ and thus $x' R z'$. If $x =w$ and $y \geq z$ AND $w>u$ then $x>u$ which implies that $x' R z'$. If $x = w$ and $y\geq z$ AND $w = u$ and $z \geq v$ then $y\geq v$ and thus $x' R z'$ 
+
+\end{proof}
+
+\begin{exercise}
+
+Let $X_1$ be a set of potential chicken dishes and let $X_2$ be a set of potential veg-
+etarian dishes. Assume that both sets are finite and $X_1 \intersect X_2 = \emptyset$. The set of
+all alternatives are given by $X = X_1 \union X_2$. For each $i = 1, 2$ the decision maker
+has a strict preference (linear order) $R_i$ over $X_i$. Faced with a menu $A \in P(X)$,
+she first determines which one of the two categories of meals is more popular: if
+$|A \intersect X_i| > |A \intersect X_j |$ then she chooses her favorite dish in $|A \intersect X_i|$ with respect to
+$R_i$. In case of a tie, i.e. if there are the same number of dishes available from each
+category, then she chooses her favorite available chicken dish. Let $c$ denote her
+choice function. Does there exist a rational preference relation $R$ on $X$ such that
+$c = c^R$? If your answer is yes show why, otherwise give a counterexample.
+
+
+\end{exercise}
+
+
+\begin{proof}
+
+Let $x \in X_1$ and $w,z \in X_2$ such that $w$ is preferred to $z$ as dishes. $w \in \{x,w\} \subset \{x,w,z\}$ and since $w = c(\{x,w,z\})$ it must be the case that $w \in c(\{x,w\})$ but it isn't since $x$ is a chicken dish and thus sen's alpha condition does not hold so there can't be a rational preference which maximizes $c$. 
+
+
+
+\end{proof}
+
+
+\begin{exercise}
+
+Consider the choice function c induced by the satisfycing procedure given in text. Does there exist a rational preference R such that c = cR? If your answer is yes show why, otherwise give a counterexample
+
+
+\end{exercise}
+
+\begin{proof}
+
+If $x \in B \subset A \subseteq X$ and $x \in C(A) \IFF e(x) \geq e$ where $e(x)$ is some utility function and $e$ is a threshold then it is clear that $x \in c(B)$ too and thus $c$ satisfies sen's alpha condition.  Additionally, if $x,y \in c(B)$ then $x \in c(A)$ if $B \subseteq A$ which means that sen's beta trivially holds and thus there must exist some rational preference $R$ which maximizes that choice function. Specifically, all of the members of $X$ which is a satisfying element are indifferent to one another and they all also serve as strict upper bounds to all of the elements which aren't satisfying. 
+\end{proof}
+
+\begin{exercise}
+Let $X$ be a finite set of alternatives. A choice correspondence $c$ satisfies path-independence if for any $A, B \in P(X)$
+
+\[c(c(A) \union c(B)) = c(A \union B)\]
+
+\begin{itemize}
+
+\item[(a)] Briefly explain (in words) how you interpret path independence.
+
+\item[(b)] Show that Sen’s $\alpha$ and Sen’s $\beta$ together imply path-independence
+
+\item[(c)] Show that path-independence implies Sen’s $\alpha$
+
+\item[(d)] Give a counterexample showing that path-independence does not imply Sen’s $\beta$
+
+\end{itemize}
+
+\end{exercise}
+
+\begin{proof}
+
+\begin{itemize}
+
+\item[(a)] Path independence of a choice function refers to the (intuitive) property of a choice function which says that gathering the optimal elements the union of two collections is equivalent to optimizing each collection individually and then optimizing the union of both of them once more to "refine" the first optimization.  
+
+
+\item[(b)] Since we can assume Sen's $\alpha$ and $\beta$ then there exists a rational preference $R$ such that $c = c^R$. Let $x \in c^R(c^R(A) \union c^R(B))$ then ${\forall}_{z \in c^R(A) \union c^R(B)} x \r z$. Let $z' \in (A \union B) \setminus (c^R(A) \union c^R(B))$ so there exists $x_1, x_2 \in A \union B$ such that $x_1, x_2 \P z'$ where $x_1 \in A$ and $x_2 \in B$. WLOG assume that $x \in c^R(A)$ which implies that $x \r x_1 \P z' \RIGHT x \P z'$ and thus $x \in c^R(A \union B)$. If $x \in c^R(A \union B)$ and $z \in c^R(A) \union c^R(B) \RIGHT z \in A \union B$ which implies that $x R z$ and thus $x \in c^R(c^R(A) \union c^R(B))$ and path independence holds.  
+
+\item[(c)] Let $x \in B \subset A$. By way of contradiction, let's also assume that $x \in c(A)$ but that $x \notin c(B)$. By path independence, we have that $c(A) = c(B \union (A \setminus B)) = c(c(B) \union c(A \setminus B)) \RIGHT x \in c(B)$ or $x \in c(A \setminus B)$ but since $x \notin c(B)$ $x$ must be in $c(A \setminus B)$. This means that $x$ is not in $B$ and thus we have a contradiction and Sen's $\alpha$ must hold. 
+
+\item[(d)] Let $X = \{x,y,z\}$ and let $c$ be a choice correspondence such that $c(X) = \{z\}, c\{x,y\} = \{y\}, c\{x,z\} = \{x,z\}$ and $ c\{y,z\} = \{z\}$ . It clearly doesn't satisfy Sen's $\beta$ but yet is path independent. 
+
+\end{itemize}
+
+
+\end{proof}
+
+
+\begin{exercise}
+Let $X$ be a finite set of alternatives. Prove that if a choice correspondence $c$ on a finite set of alternatives $X$ satisfies Sen’s condition $\alpha$, then there exists a rational preference relation R such that $c^R \subset c$.
+
+
+\end{exercise} 
+
+\begin{proof}
+
+
+
+
+
+
+\end{proof}
+
+\begin{exercise}
+
+Let $X = {\mathbb{R}}_{+} $ represent nonnegative monetary prizes and consider an expected utility maximizer with vNM utility function $u(x) = x^2$
+
+\begin{enumerate}
+
+\item [(a)] Would she always make the same choices among lotteries if her vNM utility function were instead:
+
+\begin{enumerate}
+
+\item [(i)] $v(x) = 5x^2 + 3$
+\item [(ii)] $v(x) = {(5x+3)}^2$
+\item [(iii)] $v(x) = -2x^2 + 3$
+\item [(iv)] $v(x) = x^4$
+
+
+
+\end{enumerate}
+
+\item[(b)] Would she make the same choices among degenerate lotteries (i.e. sure prizes) if she were using $v(x) = x^4$? How do you reconcile your answer with your answer to (a.iv)?
+
+\item[(c)]  In each of (a.i)-(a.iv), if your answer is negative, find two lotteries $p$ and $q$ such that when the decision-maker is asked to choose from $\{p, q\}$, she strictly prefers $p$ if she has the vNM utility function $u$ and she strictly prefers $q$ if she has the vNM utility function $v$
+
+
+
+\end{enumerate}
+
+
+
+\end{exercise} 
+
+\begin{solution}
+
+
+
+\begin{enumerate}
+
+\item [(a)] 
+\begin{enumerate}
+
+\item [(i)] Yes
+\item [(ii)] No
+\item [(iii)] No
+\item [(iv)] No
+
+
+
+\end{enumerate}
+
+\item[(b)] Yes since $U(\delta_x) \leq U(\delta_y) \IFF V(\delta_x) \leq V(\delta_y) \IFF x^2 \leq x^4$ where $U(x)$ and $V(x)$ are the expected utility functions induced by $u$ and $v$. This doesn't contradict the previous answer since we're specifically restricting our space of lotteries to the ones where the expected utility function and the vNM utility function coincide and thus would obviously ensure that the decision maker makes the same of choices. 
+
+\item[(c)]  
+\begin{enumerate}
+
+\item [(ii)] Consider $p = \delta_n$ and $q = \alpha \delta_{n-1} + (1-\alpha) \delta_{n+1}$ where $n = 7$ and $\alpha = .467$. We get that $U(p) - U(q) = -0.076 < 0$ and $V(p) - V(q) = 0.08 > 0$ so we get that $u$ prefers $q$ over $p$ and $v$ prefers $p$ over $q$.  
+\item [(iii)] Consider $p = \delta_n$ and $q = \alpha \delta_{n-1} + (1-\alpha) \delta_{n+1}$ where $n = 10$ and $\alpha = 0.45$. We get that $U(p) - U(q) = 1 > 0$ and $V(p) - V(q) = -2 < 0$ so $u$ prefers $p$ over $q$ and $v$ prefers $q$ over $p$. 
+\item [(iv)] Consider $p = \delta_n$ and $q = \alpha \delta_{n-1} + (1-\alpha) \delta_{n+1}$ where $n =3$ and $\alpha = 0.364$. We get that $U(p) - U(q) = 0.632 > 0$ and $V(p) - V(q) = -22.36 < 0$ so $u$ prefers $p$ over $q$ and $v$ prefers $q$ over $p$.
+
+\end{enumerate}
+
+
+\end{enumerate}
+
+
+
+\end{solution} 
+
+
+\begin{exercise}
+
+Now suppose that X is the set of integers. Would the vNM utility functions $u(x) = 3x + 2 \sin(2\pi x)$ and $v(x) = 7x + 5$ yield different choices over lotteries?
+
+
+
+\end{exercise}
+
+\begin{solution}
+
+If we consider the set of integers then $u(x) =3x$ since $\sin(2 \pi x)$ vanishes over the set of integers. Furthermore, one can rewrite $v(x)$ as $au(x) + b$ where $a = \frac{7}{3}$ and $b =5$ so they must admit the same choices.  
+
+
+\end{solution}
+
+\begin{exercise}
+
+Let $X = \{x_1, x_2, x_3\}$ be the set of prizes. In each of the following questions, do the following. Check which of the three conditions: rationality, independence, and solvability, the preference R satisfies. Find an expected utility representation if R satisfies all three conditions, otherwise give a counterexample for each condition that it violates.
+
+\begin{enumerate}
+
+\item[(a)] $p \r q \IFF \min_{p(x_i)>0}i \geq  \min_{q(x_j)>0}j$ 
+
+\item[(b)]  $p \r q \IFF  a^{p(x_1)} b^{p(x_2)} c^{p(x_3)} \geq a^{q(x_1)} b^{q(x_2)} c^{q(x_3)}$
+
+\item[(c)] $p \r q \IFF {p(x_1)}^2 + {p(x_2)}^2 + {p(x_3)}^2 \geq {q(x_1)}^2 + {q(x_2)}^2 + {q(x_3)}^2 $
+
+\item[(d)] $p \r q \IFF p(x_3) > q(x_3)$ or $p(x_3) = q(x_3)$ and $p(x_2) \geq q(x_2)$
+
+
+\end{enumerate}
+
+\end{exercise}
+
+\begin{solution}
+
+\begin{enumerate}
+
+\item[(a)] Let $p \r q \IFF \min_{p(x_i)>0}i \geq  \min_{q(x_j)>0}j$ and $f(p) = \min_{p(x_i)>0}i$. $p$ is clearly complete and transitive since $f(p)$ is just an integer and that's all we're comparing. However, it fails solvability since $f(\delta_{x_2}) = 2$ while $f(\alpha \delta_{x_1} + (1-\alpha) \delta_{x_3})$ is always $1$ or $3$ and thus no $\alpha$ would make $\alpha \delta_{x_1} + (1-\alpha) \delta_{x_3}$ indifferent to $\delta_{x_2}$.
+
+\item[(b)] Let  $p \r q \IFF a^{p(x_1)} b^{p(x_2)} c^{p(x_3)} \geq a^{q(x_1)} b^{q(x_2)} c^{q(x_3)}$ and WLOG assume that $a \geq b \geq $ so that $\delta_{x_i}$ is preferred to $\delta_{x_j}$ when $j \leq i$ and also define $f(p)$ to be $a^{p(x_1)} b^{p(x_2)} c^{p(x_3)}$. For the same reasons as part $(a)$, the relation is complete and transitive. Furthermore, since $f(\alpha p + (1-\alpha) q) = {f(p)}^{\alpha} {f(r)}^{1-\alpha} $, the relation is independent since the map $x \to x^{\alpha}$ is increasing for $\alpha \geq 0$. The relation is also solvable since if $p \P q \P r$ then $\alpha = \frac{\log(f(q)/f(r))}{\log(f(p)/f(r))}$ would satisfy $q \I \alpha p + (1-\alpha) q$. Let $U(p) = \log(f(p))$ be a potential expected utility representation. This  should be linear since $\log({f(p)}^{\alpha} {f(q)}^{1-\alpha}) = \alpha \log f(p) + (1-\alpha )\log f(q)$ for any lotteries $p$ and $q$ and it clearly represents the relation $R$. 
+\item[(c)] Let $p \r q \IFF {p(x_1)}^2 + {p(x_2)}^2 + {p(x_3)}^2 \geq {q(x_1)}^2 + {q(x_2)}^2 + {q(x_3)}^2$ and let $f(p) ={p(x_1)}^2 + {p(x_2)}^2 + {p(x_3)}^2 $. $\r$ satisfies completeness and transitivity for the same reason as $(b)$. Furthermore, $f(\alpha \delta_{x_i} + (1-\alpha) \delta_{x_j}) = 1 - 2\alpha(1-\alpha)$. Now, with the previous fact and assuming independence, $\delta_{x_1} \r \delta_{x_2} \RIGHT \alpha \delta_{x_1} + (1-\alpha) \delta_{x_2} \r \delta_{x_2} \IFF 1 - 2 \alpha (1-\alpha) \geq 1$ which is clearly false for $\alpha = \frac{1}{2}$ and thus the relation doesn't satisfy independence. 
+\item[(d)] Let $p \r q \IFF p(x_3) > q(x_3)$ or $p(x_3) = q(x_3)$ and $p(x_2) \geq q(x_2)$. This relation is clearly not solvable since $\delta_{x_3} \P \delta_{x_2} \P \delta_{x_1}$ does not imply that $\delta_{x_2} \I \alpha \delta_{x_3} + (1-\alpha) \delta_{x_1}$ for some $\alpha$ since the only way they would be indifferent is if probabilities of getting $x_2$ were the same which, by definition, is impossible since the former admits a value of $1$ and the latter admits a value of $0$. 
+
+
+\end{enumerate}
+
+\end{solution}
+
+\begin{exercise}
+ In the following, suppose that our individual is an expected utility maximizer with the vNM utility function $u : \RR \to \RR$
+ 
+ \begin{enumerate}
+ 
+ \item[(a)] Show that our decision-maker is risk-averse if and only if $u$ is concave. (Remember that a function $f : \RR \to \RR$ is concave if $f (\alpha x + (1 - \alpha)y) \geq \alpha f (x) + (1 - \alpha)f (y)$ for any $x, y \in \RR$ and $\alpha \in [0, 1]$.)
+ 
+ \item[(b)] Mimicking the above definition of risk-aversion, can you come up with a definition of risk-loving $R$, and relate the risk-loving behavior to the shape of the vNM utility function? Can you do the same for risk-neutral $R$?
+ 
+ 
+ \end{enumerate}
+
+
+\end{exercise} 
+
+\begin{solution}
+ In the following, suppose that our individual is an expected utility maximizer with the vNM utility function $u : \RR \to \RR$
+ 
+ \begin{enumerate}
+ 
+ \item[(a)] Let $U(p)$ denote the expected utility function that $u$ admits so that $U(\delta_x) = u(x)$.  A decision-maker is risk-averse if and only if $\delta_{\alpha x + (1-\alpha)y}$ $R$ $\alpha \delta_x + (1-\alpha) \delta_y$ for any $x,y \in \RR$ and $\alpha \in [0,1] \IFF U(\delta_{\alpha x + (1-\alpha)y}) \geq U(\alpha \delta_x + (1-\alpha) \delta_y) \IFF u(\alpha x + (1-\alpha) y) \geq \alpha U(\delta_x) + (1-\alpha) U(\delta_y) \IFF u(\alpha x + (1-\alpha) y)  \geq \alpha u(x) + (1-\alpha) u(y)$ which is equivalent to $u$ being concave. 
+ 
+ \item[(b)]  A definition of risk-loving would just involve switching the two lotteries in the definition of risk-averse and thus $u$ would need to be convex as opposed to concave. A definition of being risk-neutral would be where the preference relation is replaced by the indifrrence relation and thus $u$ would be convex and concave and would be of the form $ax + b$ which would mean that $u(x)$ would denote the usual expected value function. 
+ 
+ \end{enumerate}
+
+
+\end{solution} 
+
+
+
+
+
+
+
+
+
+
+\end{document}
